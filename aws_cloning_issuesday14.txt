@@ -1,0 +1,33 @@
+Issue with Cloning AWS Repository
+
+I'm having trouble cloning an AWS repository into my own GitHub repo. Here are the steps I've been trying to resolve the issue:
+
+1. Check Permissions: Ensure I have access to the AWS CodeCommit or GitHub repository.
+2. Correct URL: Verify that I’m using the correct repository URL for cloning. For AWS CodeCommit, it should look like:
+    ```
+    https://git-codecommit.<region>.amazonaws.com/v1/repos/<repository-name>
+    ```
+3. Clone Command:
+    ```bash
+    git clone <repository-url>
+    ```
+4. Handle Credential Issues: If I face problems with HTTPS credentials, I'm considering switching to SSH for smoother authentication.
+5. Forking and Upstream: If the repo is not mine, I will fork it first and then clone my fork. I’ll add the original as upstream to stay updated:
+    ```bash
+    git remote add upstream <original-repo-url>
+    git fetch upstream
+    ```
+
+I'm also running the following Bash script to pull a Docker image and run it, which may be relevant to my setup:
+
+```bash
+#!/bin/bash
+set -e
+IMAGE_NAME="your-docker-image-name"
+echo "Pulling the Docker image from Docker Hub..."
+docker pull "$IMAGE_NAME"
+echo "Running the Docker image as a container..."
+docker run -d "$IMAGE_NAME"
+```
+
+If anyone has advice or solutions for the AWS repository cloning issue, I’d greatly appreciate it!
